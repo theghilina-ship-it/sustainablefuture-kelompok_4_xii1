@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Akar Hari Ini, Hutan Esok — Kelompok 4 XII.1</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{--bg:#eef3ec;--surface:#fff;--ink:#14281c;--mute:#4c6354;--line:#cfdccf;--forest:#1f4a30;--leaf:#4f8a3c;--sun:#e8a317;--sky:#1f7f86;--onforest:#f2f8ef;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1b14;--surface:#172a1f;--ink:#e6f0e3;--mute:#9bb3a2;--line:#2b4435;--forest:#8fd07a;--leaf:#6fb35a;--sun:#f0b73a;--sky:#4fc0c8;--onforest:#0f1b14;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1b14;--surface:#172a1f;--ink:#e6f0e3;--mute:#9bb3a2;--line:#2b4435;--forest:#8fd07a;--leaf:#6fb35a;--sun:#f0b73a;--sky:#4fc0c8;--onforest:#0f1b14;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+h2{font-size:clamp(28px,5vw,40px);font-weight:800;color:var(--forest);margin-bottom:8px}
+.lead{color:var(--mute);max-width:60ch;margin:0 0 28px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:18px;overflow-x:auto;padding-top:12px;padding-bottom:12px;align-items:center}
+nav a{color:var(--ink);text-decoration:none;font-weight:600;white-space:nowrap;font-size:15px}
+nav a:hover{color:var(--leaf)}
+nav button{margin-left:auto;flex:none}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.hero{padding:48px 0 24px}
+.hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+.hero h1{font-size:clamp(40px,8vw,76px);font-weight:800;color:var(--forest);letter-spacing:-.02em}
+.hero p{font-size:19px;color:var(--mute);max-width:46ch}
+.tag{display:inline-block;background:var(--forest);color:var(--onforest);padding:4px 12px;border-radius:99px;font-weight:600;font-size:14px;margin-bottom:16px}
+.meter{display:flex;align-items:center;gap:12px;margin-top:20px;font-weight:600}
+.bar{flex:1;height:10px;border-radius:9px;background:var(--line);overflow:hidden;max-width:260px}
+.bar i{display:block;height:100%;width:0;background:var(--leaf);transition:width .5s}
+#tree{width:100%;height:auto;max-height:420px}
+.leaf{fill:var(--line);transition:fill .5s,transform .5s;transform-box:fill-box;transform-origin:center}
+.leaf.on{fill:var(--leaf);transform:scale(1.25)}
+.leaf.on.alt{fill:var(--sun)}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:10px;margin-bottom:18px}
+.tab{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:12px;text-align:left;color:var(--ink);transition:border-color .2s,background .2s}
+.tab b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:17px}
+.tab span{font-size:14px;color:var(--mute)}
+.tab[aria-selected=true]{border-color:var(--leaf);background:var(--forest);color:var(--onforest)}
+.tab[aria-selected=true] span{color:var(--onforest);opacity:.85}
+.tab.done::after{content:"✓ sudah dibaca";display:block;font-size:13px;color:var(--leaf);font-weight:600}
+.tab[aria-selected=true].done::after{color:var(--sun)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px}
+.panel h3{font-size:26px;color:var(--forest);margin-bottom:6px}
+.panel .meta{color:var(--mute);margin:0 0 16px;font-size:15px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel h4{margin:0 0 6px;font:700 16px "Bricolage Grotesque",sans-serif;color:var(--sky)}
+.panel ul{margin:0;padding-left:20px}
+.panel li{margin-bottom:6px}
+.core{margin-top:20px;padding:16px 18px;border-left:6px solid var(--sun);background:var(--bg);border-radius:0 12px 12px 0;font-weight:600}
+.calc{background:var(--forest);color:var(--onforest);border-radius:24px;padding:28px}
+.calc h2{color:var(--onforest)}.calc .lead{color:var(--onforest);opacity:.85}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.chip{border:2px solid var(--onforest);background:transparent;color:var(--onforest);border-radius:99px;padding:6px 14px;font-weight:600}
+.chip[aria-pressed=true]{background:var(--sun);border-color:var(--sun);color:#14281c}
+.in{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:520px}
+.in label{display:block;font-size:14px;font-weight:600}
+.in input{width:100%;padding:10px 12px;border-radius:10px;border:2px solid var(--onforest);background:var(--surface);color:var(--ink);font:600 18px inherit}
+.res{margin-top:22px;font-family:"Bricolage Grotesque",sans-serif}
+.res .big{font-size:clamp(44px,9vw,72px);font-weight:800;color:var(--sun)}
+.res p{font-family:"Source Sans 3",sans-serif;margin:4px 0 0;font-size:17px}
+.gauge{height:16px;background:rgba(255,255,255,.2);border-radius:9px;margin-top:12px;overflow:hidden}
+.gauge i{display:block;height:100%;background:var(--sun);width:0;transition:width .5s}
+.sdg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.sdg div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.sdg b{display:block;font:800 20px "Bricolage Grotesque",sans-serif;color:var(--leaf);margin-bottom:4px}
+.sdg small{color:var(--mute);font-size:15px;display:block;margin-top:6px}
+.pledge{display:grid;gap:10px}
+.pledge label{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer}
+.pledge input{width:22px;height:22px;accent-color:var(--leaf);flex:none;margin-top:2px}
+#pmsg{font-weight:700;color:var(--forest);margin-top:14px;min-height:28px}
+.team{display:flex;flex-wrap:wrap;gap:10px}
+.team span{background:var(--surface);border:1px solid var(--line);padding:8px 14px;border-radius:99px;font-weight:600}
+.rubric{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:28px}
+.rubric div{border-top:4px solid var(--sun);padding-top:10px}
+.rubric b{font-family:"Bricolage Grotesque",sans-serif;color:var(--forest);font-size:18px}
+.rubric p{margin:4px 0 0;color:var(--mute);font-size:15px}
+.essay{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 26px 10px;max-width:760px}
+.et{font-size:clamp(24px,4.5vw,34px);color:var(--forest)}.em{color:var(--mute);margin:6px 0 20px;font-size:15px}
+.essay p[data-p]{margin:0 0 18px;padding-left:16px;border-left:5px solid var(--line);transition:opacity .3s,border-color .3s;line-height:1.75}
+.lb{display:block;font:700 14px "Bricolage Grotesque",sans-serif;color:var(--sky);margin-bottom:2px}
+.essay.f p[data-p]{opacity:.28}.essay.f p.hit{opacity:1;border-left-color:var(--sun)}
+.ewc{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:16px 0;font-weight:600}
+.ewc small{color:var(--mute);font-weight:400;width:100%}
+#ef .chip{color:var(--ink);border-color:var(--line)}#ef .chip[aria-pressed=true]{color:#14281c;border-color:var(--sun)}
+.chk{max-width:760px;margin-top:24px}.chk h4{font:700 18px "Bricolage Grotesque",sans-serif;color:var(--forest);margin:0 0 10px}
+.chk label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;cursor:pointer}.chk input{width:20px;height:20px;accent-color:var(--leaf);flex:none;margin-top:3px}
+.scr{font:800 28px "Bricolage Grotesque",sans-serif;color:var(--leaf);margin-top:8px}
+.jg{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.jc{border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:6px 14px;font-weight:600}.jc.on{background:var(--leaf);border-color:var(--leaf);color:#fff}.jd{background:var(--bg);border-radius:14px;padding:14px 16px}.jd p{margin:6px 0}.jb{border:2px solid var(--sky);background:transparent;color:var(--sky);border-radius:99px;padding:6px 14px;font-weight:600}.jb:hover{background:var(--sky);color:var(--surface)}
+.essay{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;max-width:780px}.essay h3{font-size:clamp(22px,4vw,30px);color:var(--forest)}
+.ep{--c:var(--leaf);border-left:5px solid var(--c);padding:6px 0 6px 16px;margin:20px 0;cursor:pointer;transition:opacity .3s,background .3s;border-radius:0 12px 12px 0}.ep small{display:block;color:var(--forest);font:700 15px "Bricolage Grotesque",sans-serif}.ep p{margin:4px 0;font-size:18px;line-height:1.75}.ep .nt{display:none;font-size:15px;color:var(--mute);background:var(--bg);padding:8px 12px;border-radius:10px;margin-top:6px}.ep.open .nt{display:block}.essay.dim .ep:not(.hl){opacity:.28}.ep.hl{background:var(--bg)}mark{background:transparent;color:inherit}.essay.kw mark{background:color-mix(in srgb,var(--sun) 45%,transparent);border-radius:4px;padding:0 2px}.wc{margin-top:16px;color:var(--mute);font-weight:600}#rnote{min-height:48px;font-weight:600;color:var(--forest);margin:4px 0 14px}
+footer{padding:32px 0 48px;color:var(--mute);text-align:center;font-size:15px}
+@media(max-width:720px){.hero .grid,.cols{grid-template-columns:1fr}#tree{max-height:300px}section{padding:40px 0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+:root{--bg:#f3fbe9;--surface:#fff;--ink:#17332a;--mute:#4f6a5c;--line:#17332a;--forest:#0f4a37;--leaf:#2fb36b;--sun:#ffc933;--sky:#12a7b0;--coral:#ff6f61;--lilac:#b79cff;--onforest:#f6fff0;--track:#d5ecc8;--sh:4px 4px 0 #17332a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1f19;--surface:#173128;--ink:#eaf7ec;--mute:#a5c2b0;--line:#6fb590;--forest:#9be28a;--leaf:#5fd08b;--sun:#ffd54a;--sky:#52d0d6;--coral:#ff8a7c;--lilac:#c7b3ff;--onforest:#0e1f19;--track:#2b4a3c;--sh:4px 4px 0 #000}}
+:root[data-theme="dark"]{--bg:#0e1f19;--surface:#173128;--ink:#eaf7ec;--mute:#a5c2b0;--line:#6fb590;--forest:#9be28a;--leaf:#5fd08b;--sun:#ffd54a;--sky:#52d0d6;--coral:#ff8a7c;--lilac:#c7b3ff;--onforest:#0e1f19;--track:#2b4a3c;--sh:4px 4px 0 #000}
+body{background-image:radial-gradient(color-mix(in srgb,var(--leaf) 28%,transparent) 1.6px,transparent 1.6px);background-size:26px 26px}
+nav{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:2px solid var(--line)}
+nav a{padding:6px 12px;border-radius:99px}nav a:hover{background:var(--sun);color:#17332a}
+.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 85% 15%,color-mix(in srgb,var(--sun) 45%,transparent),transparent 42%),radial-gradient(circle at 8% 85%,color-mix(in srgb,var(--sky) 30%,transparent),transparent 45%)}
+.hero .wrap{position:relative;z-index:1}
+.deco span{position:absolute;font-size:30px;animation:fl 6s ease-in-out infinite;pointer-events:none}
+@keyframes fl{50%{transform:translateY(-14px) rotate(8deg)}}
+.tag{background:var(--sun);color:#17332a;border:2px solid #17332a;transform:rotate(-2deg);box-shadow:3px 3px 0 #17332a}
+.hero h1{text-shadow:3px 3px 0 color-mix(in srgb,var(--sun) 70%,transparent)}
+.bar{height:16px;background:var(--track);border:2px solid var(--line)}
+svg ellipse{fill:var(--track)}.leaf{fill:var(--track)}.leaf.on{stroke:#17332a;stroke-width:2}
+h2::after{content:"";display:block;width:110px;height:12px;margin-top:6px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='12' viewBox='0 0 110 12'%3E%3Cpath d='M2 6 Q 14 -2 27 6 T 52 6 T 77 6 T 102 6' fill='none' stroke='%23ff6f61' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}
+.ribbon{background:var(--sun);color:#17332a;border-block:2px solid #17332a;transform:rotate(-1.2deg);margin:18px -10px;overflow:hidden;white-space:nowrap;font:800 18px "Bricolage Grotesque",sans-serif}
+.ribbon div{display:inline-block;padding:10px 0;animation:mq 28s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.tab,.panel,.essay,.sdg div,.jd,.pledge label,.team span{border:2px solid var(--line);box-shadow:var(--sh)}
+.panel,.essay{border-radius:26px}.tab{border-radius:18px;transition:transform .15s,box-shadow .15s,background .2s}
+.tab::before{display:block;font-size:26px;margin-bottom:4px}
+.tab:nth-child(1)::before{content:"🎓"}.tab:nth-child(2)::before{content:"🥗"}.tab:nth-child(3)::before{content:"🛠️"}.tab:nth-child(4)::before{content:"🎤"}.tab:nth-child(5)::before{content:"🤝"}.tab:nth-child(6)::before{content:"✍️"}
+.tab:hover{transform:translate(-1px,-3px)}.tab[aria-selected=true]{transform:translate(3px,3px);box-shadow:none}
+.core{border-left-color:var(--coral);border-radius:0 16px 16px 0}
+.chip,.jc,.jb{box-shadow:2px 2px 0 var(--line)}
+.calc{border:2px solid #17332a;box-shadow:8px 8px 0 var(--sun);border-radius:30px}.gauge{border:2px solid var(--onforest);height:18px}
+.sdg div{border-radius:22px}.sdg div:nth-child(odd){transform:rotate(-1.2deg)}.sdg div:nth-child(even){transform:rotate(1.2deg)}
+.sdg div::before{display:block;font-size:34px}.sdg div:nth-child(1)::before{content:"🎓"}.sdg div:nth-child(2)::before{content:"💚"}.sdg div:nth-child(3)::before{content:"🛠️"}.sdg div:nth-child(4)::before{content:"🤝"}
+#sdg,#esai{border-radius:48px;margin:0 8px}
+#sdg{background:color-mix(in srgb,var(--sky) 16%,var(--bg))}#esai{background:color-mix(in srgb,var(--lilac) 22%,var(--bg))}
+.ep:nth-child(2){--c:var(--coral)}.ep:nth-child(3){--c:var(--sky)}.ep:nth-child(4){--c:var(--sun)}.ep:nth-child(5){--c:var(--lilac)}.ep:nth-child(6){--c:var(--leaf)}
+.pledge label{border-radius:18px;transition:background .2s}.pledge label:has(input:checked){background:color-mix(in srgb,var(--leaf) 30%,var(--surface))}
+.team span{color:#17332a}.team span:nth-child(4n+1){background:var(--sun)}.team span:nth-child(4n+2){background:var(--lilac)}.team span:nth-child(4n+3){background:#b6ec8c}.team span:nth-child(4n+4){background:#ffb3a8}
+.rubric div{border-top-width:5px;border-top-color:var(--coral)}.rubric div:nth-child(2){border-top-color:var(--sky)}.rubric div:nth-child(3){border-top-color:var(--leaf)}.rubric div:nth-child(4){border-top-color:var(--lilac)}
+.cf{position:fixed;top:-30px;z-index:20;font-size:26px;pointer-events:none;animation:fall 2.6s ease-in forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(420deg)}}
+@media(prefers-reduced-motion:reduce){.deco span,.ribbon div{animation:none!important}.cf{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a href="#eksplor">Enam LKPD</a><a href="#peluang">Hitung peluang</a><a href="#esai">Esai Bindo</a><a href="#esai">Esai Bindo</a><a href="#sdg">Sustainable Future</a><a href="#komitmen">Komitmen</a><a href="#tim">Tim</a>
+<button id="theme" class="chip" style="color:var(--ink);border-color:var(--line)" aria-label="Ganti tema terang atau gelap">Tema</button>
+</div></nav>
+
+<header class="hero"><div class="deco" aria-hidden="true"><span style="left:4%;top:8%">🍃</span><span style="left:46%;top:3%;animation-delay:-2s">☀️</span><span style="right:5%;top:58%;animation-delay:-4s">🌿</span><span style="left:42%;bottom:5%;animation-delay:-1s">🦋</span><span style="right:28%;top:9%;animation-delay:-3s">✨</span></div><div class="wrap grid">
+<div>
+<span class="tag">Sustainable Future · Kelompok 4 · XII.1 · SMAN 4 Tangerang</span>
+<h1>Akar hari ini, hutan esok.</h1>
+<p>Enam LKPD kami, satu pohon yang sama. Buka tiap LKPD dan lihat pohonnya tumbuh: masa depan berkelanjutan dimulai dari pilihan kuliah yang realistis, tubuh yang sehat, keterampilan kerja, dan kejujuran.</p>
+<div class="meter"><span id="cnt">0 / 6 dibaca</span><div class="bar"><i id="fill"></i></div></div>
+<p style="font-size:16px;margin-top:14px"><a href="#eksplor" style="color:var(--sky);font-weight:600">Mulai menanam, buka LKPD pertama</a></p>
+</div>
+<svg id="tree" viewBox="0 0 320 340" role="img" aria-label="Pohon yang bertambah rimbun setiap LKPD dibaca">
+<ellipse cx="160" cy="322" rx="120" ry="12" fill="var(--line)"/>
+<path d="M150 322 C152 250 148 210 158 150 C162 210 170 250 172 322Z" fill="#7a5a3a"/>
+<path d="M158 230 C130 210 110 200 92 170 M162 200 C190 180 212 168 232 138 M158 170 C150 140 146 120 150 90" stroke="#7a5a3a" stroke-width="7" fill="none" stroke-linecap="round"/>
+<circle class="leaf" id="lf0" cx="90" cy="160" r="30"/><circle class="leaf alt" id="lf1" cx="236" cy="128" r="30"/>
+<circle class="leaf" id="lf2" cx="150" cy="78" r="34"/><circle class="leaf alt" id="lf3" cx="196" cy="196" r="26"/>
+<circle class="leaf" id="lf4" cx="118" cy="214" r="26"/><circle class="leaf alt" id="lf5" cx="190" cy="100" r="22"/>
+</svg>
+</div></header>
+
+<div class="ribbon" aria-hidden="true"><div>🌱 Mandiri ✦ Kolaboratif ✦ Berintegritas ✦ Sustainable Future ✦ Kelompok 4 ✦ 🌱 Mandiri ✦ Kolaboratif ✦ Berintegritas ✦ Sustainable Future ✦ Kelompok 4 ✦ </div></div>
+<section id="eksplor"><div class="wrap">
+<h2>Enam LKPD, satu perjalanan</h2>
+<p class="lead">Pilih satu LKPD. Setiap ringkasan memuat temuan utama dan kesimpulan intinya.</p>
+<div class="tabs" role="tablist" id="tabs"></div>
+<article class="panel" id="panel" role="tabpanel" aria-live="polite"></article>
+</div></section>
+
+<section id="peluang"><div class="wrap"><div class="calc">
+<h2>Detektif data: hitung peluangmu</h2>
+<p class="lead">Rasio keketatan = daya tampung ÷ peminat × 100%. Makin kecil, makin ketat. Pilih data LKPD kami atau masukkan angkamu sendiri.</p>
+<div class="row" id="chips"></div>
+<div class="in">
+<div><label for="a">Daya tampung n(A)</label><input id="a" type="number" min="1" inputmode="numeric"></div>
+<div><label for="s">Peminat n(S)</label><input id="s" type="number" min="1" inputmode="numeric"></div>
+</div>
+<div class="res"><div class="big" id="r">–</div><p id="rt">Isi kedua angka untuk melihat hasilnya.</p><div class="gauge"><i id="g"></i></div></div>
+</div></div></section>
+
+<section id="esai"><div class="wrap">
+<h2>Esai deskriptif: catatan dari bengkel BLK</h2>
+<p class="lead">Esai ini kami tulis setelah kunjungan ke BLK Banten. Klik paragraf untuk tahu fungsinya, atau pilih aspek penilaian untuk melihat bagian yang memenuhinya.</p>
+<div class="row" id="rub"></div><div id="rnote" aria-live="polite">Pilih salah satu aspek penilaian di atas.</div>
+<article class="essay" id="essay"></article>
+</div></section>
+
+<section id="sdg"><div class="wrap">
+<h2>Benang merah: masa depan yang berkelanjutan</h2>
+<p class="lead">Keenam LKPD kami saling menguatkan tujuan pembangunan berkelanjutan (SDGs) berikut.</p>
+<div class="sdg">
+<div><b>Pendidikan berkualitas</b>Memilih prodi dengan data, bukan ikut-ikutan.<small>LKPD Peluang Kampus, Seminar Karier</small></div>
+<div><b>Hidup sehat</b>Jasmani dan rohani yang kuat menopang karier panjang.<small>LKPD Pola Hidup Sehat, Esai Bindo</small></div>
+<div><b>Pekerjaan layak</b>Keterampilan vokasi dan sertifikat BNSP membuka jalan kerja.<small>LKPD Kunjungan BLK Banten</small></div>
+<div><b>Institusi yang jujur</b>Menolak joki, plagiarisme, dan data fiktif.<small>LKPD Integritas Akademik, Esai Bindo</small></div>
+</div>
+</div></section>
+
+<section id="esai"><div class="wrap">
+<h2>Esai deskriptif: pulang dari BLK</h2>
+<p class="lead">Tulisan Bahasa Indonesia kami setelah kunjungan ke UPTD BLK Banten. Pilih topik di bawah untuk menyorot bagian yang ingin kamu baca.</p>
+<div class="row" id="ef" role="group" aria-label="Sorot bagian esai"></div>
+<article class="essay" id="es">
+<h3 class="et">Dari Bengkel Las sampai Meja Ujian: Bekal Jujur untuk Dunia Kerja</h3>
+<p class="em">Esai deskriptif · Bahasa Indonesia · Kelas XII.1</p>
+<p data-p="pendahuluan"><b class="lb">Pendahuluan</b>Selasa, 17 November 2026, kami datang ke UPTD BLK Provinsi Banten dengan satu bayangan: tempat latihan kerja pasti membosankan. Ternyata saya keliru. Begitu melangkah ke area bengkel, terdengar percikan mesin las, dengung mesin jahit, dan suara instruktur yang sabar menjelaskan langkah demi langkah. Dari situ saya mengerti bahwa dunia kerja masa kini tidak hanya mencari orang yang punya ijazah. Ia mencari orang yang bisa mengerjakan sesuatu dan bisa dipercaya.</p>
+<p data-p="peluang"><b class="lb">Isi: peluang kerja</b>BLK menyediakan enam bidang pelatihan: pengelasan, otomasi industri, instalasi listrik, otomotif, menjahit, dan tata kecantikan. Di unit otomasi, saya melihat trainer PLC, sensor, dan panel kontrol yang membuat mesin bekerja sendiri. Instruktur menjelaskan bahwa peserta bisa membawa pulang sertifikat BNSP, bukti kompetensi yang diakui secara nasional. Bagi pelamar kerja, selembar sertifikat itu sering menjadi pembeda. Setiap bidang pun punya dua jalan: menjadi karyawan di perusahaan atau membuka usaha sendiri.</p>
+<p data-p="sehat"><b class="lb">Isi: jasmani dan rohani</b>Keterampilan saja belum cukup. Di bengkel, kami diminta memakai sepatu keselamatan, sarung tangan, kacamata pelindung, dan wearpack. Satu kelalaian kecil bisa melukai, sehingga disiplin dan tubuh yang sehat benar-benar menjadi modal kerja. Pikiran juga perlu dijaga. Target yang menekan dan tugas yang menumpuk mudah membuat seseorang lelah, lalu tergoda mencari jalan pintas. Tidak heran bila syarat mengikuti pelatihan mencantumkan sehat jasmani dan rohani.</p>
+<p data-p="agama"><b class="lb">Isi: nilai agama</b>Jalan pintas itulah yang paling perlu kita waspadai. Joki tugas, plagiarisme, dan menyalin hasil AI tanpa sitasi mungkin terlihat menyelamatkan hari ini, tetapi bertentangan dengan ajaran agama tentang kejujuran dan amanah. Hasilnya pun rapuh. Seperti mahasiswa dalam studi kasus kami yang tidak paham isi esainya sendiri, orang yang curang akan tersingkap saat diuji. Pergaulan bebas juga merusak, sebab menguras waktu, kesehatan, dan fokus pada cita-cita. Agama bukan sekadar daftar larangan. Ia pagar yang menjaga langkah kita agar tidak tergelincir.</p>
+<p data-p="penutup"><b class="lb">Penutup</b>Kunjungan ini memberi saya tiga bekal: keterampilan yang nyata, tubuh dan pikiran yang sehat, serta kejujuran yang dipegang teguh. Saya memilih melanjutkan kuliah, tetapi pelajaran dari BLK akan tetap saya bawa. Mulai sekarang saya ingin bangga pada hasil kerja sendiri, sekecil apa pun, karena masa depan yang berkelanjutan hanya bisa dibangun dari proses yang jujur.</p>
+</article>
+<div class="ewc"><span id="wc">0 kata</span><div class="bar"><i id="wf"></i></div><small>target LKPD: 300 sampai 400 kata</small></div>
+<div class="chk"><h4>Uji esai ini dengan rubrik LKPD</h4><div id="rb"></div><div id="sc" class="scr" aria-live="polite">Skor: 0 / 100</div></div>
+</div></section>
+
+<section id="komitmen"><div class="wrap">
+<h2>Kesimpulan inti dan komitmen kami</h2>
+<p class="lead">Dari enam LKPD, tiga pelajaran besar. Centang komitmen yang siap kamu jalankan mulai hari ini.</p>
+<div class="pledge" id="pledge"></div>
+<div id="pmsg" aria-live="polite"></div>
+</div></section>
+
+<section id="tim"><div class="wrap">
+<h2>Kelompok 4, XII.1</h2>
+<p class="lead">Mandiri, kolaboratif, berintegritas. Kami mengerjakan proyek ini bersama.</p>
+<div class="team"><span>Alina Zahirah Kamila (01)</span><span>Dhirgam Izzati (06)</span><span>Fidya Annaida Putri Sahrul (09)</span><span>Panji Akbar Baskoro (24)</span><span>Rahma Dafina (26)</span><span>Siti Reska Ernawati (31)</span><span>Wildan Al Fadli Andaresta (34)</span></div>
+<div class="rubric">
+<div><b>Isi dan inovasi</b><p>Enam LKPD dirangkum, ditambah kalkulator peluang dan pohon yang tumbuh.</p></div>
+<div><b>Penyajian</b><p>Satu halaman, navigasi jelas, nyaman di ponsel, tersedia mode gelap.</p></div>
+<div><b>Kolaborasi</b><p>Hasil kerja tujuh anggota dan pembagian peran dalam satu karya.</p></div>
+<div><b>Dampak dan relevansi</b><p>Terhubung ke SDGs dan keputusan nyata setelah lulus SMA.</p></div>
+</div>
+</div></section>
+<footer>Tema: Sustainable Future · SMAN 4 Tangerang · 2026</footer>
+
+<script>
+var L=[
+{t:"Peluang Kampus",s:"Matematika: peluang",h:"Detektif Data: Analisis Peluang Program Studi",m:"Mata pelajaran Matematika · Kelompok 4 · XII.1",
+a:["Tiga target: STEI-K ITB (90 kursi, 2.381 peminat), Teknik Elektro Unpad (29 kursi, 665 peminat), Teknik Elektro UI (34 kursi, 505 peminat).","Rasio keketatan: ITB 3,78%, Unpad 4,36%, UI 6,73%.","ITB paling sulit; kursi terbanyak tidak otomatis lebih mudah."],
+b:["Rumus dasar: P(A) = n(A) ÷ n(S).","UI dipakai sebagai Plan B karena relatif paling longgar.","Persiapan: jadwal belajar, latihan soal, try out, jujur dalam seleksi."],
+c:"Ketiganya di bawah 10%, jadi sangat ketat. Peluang bukan jaminan; yang menentukan adalah persiapan dan pilihan cadangan."},
+{t:"Pola Hidup Sehat",s:"Jasmani dan rohani",h:"Pola Rencana Hidup Sehat",m:"Ringkasan tema kesehatan jasmani dan rohani",
+a:["Tidur cukup, makan teratur, dan olahraga ringan menjaga fokus belajar.","Kesehatan mental: kelola stres UTBK dan bercerita pada orang tepercaya.","Ketahanan fisik dan disiplin adalah syarat dunia kerja dan pelatihan BLK."],
+b:["Jadwalkan jam belajar, istirahat, dan gerak setiap hari.","Cek kebiasaan mingguan, bukan hanya nilai.","Sehat jasmani dan rohani juga syarat daftar pelatihan BLK."],
+c:"Tubuh dan pikiran yang sehat adalah modal berkelanjutan: tanpa keduanya, rencana kuliah dan karier sulit bertahan."},
+{t:"Kunjungan BLK",s:"UPTD BLK Banten",h:"Kunjungan Belajar dan Pameran Vokasi",m:"Selasa, 17 November 2026 · UPTD BLK Provinsi Banten",
+a:["BLK membekali lulusan SMA dengan keterampilan praktis sesuai kebutuhan industri.","Enam bengkel: Las, Otomasi Industri, Instalasi Listrik, Otomotif, Menjahit, Tata Kecantikan.","Sertifikat BNSP membuktikan kompetensi secara nasional dan membedakan pelamar."],
+b:["K3: pakai APD, ikuti prosedur mesin, jaga area kerja, matikan listrik setelah dipakai.","Bidang paling menarik bagi Alina: Otomasi Industri.","Prioritas pascalulus: kuliah, dengan keterampilan vokasi sebagai bekal tambahan."],
+c:"Jalur kerja tidak hanya lewat kuliah. Keterampilan bersertifikat dan K3 membuat lulusan siap bekerja atau berwirausaha."},
+{t:"Seminar Karier",s:"Motivator pendidikan",h:"Seminar Motivasi dan Perencanaan Karier",m:"Strategi jitu memilih kuliah · SMAN 4 Tangerang · 90 menit",
+a:["Pilih jurusan di irisan minat, bakat, dan peluang kerja.","Gali informasi: kurikulum, prospek lulusan, jalur masuk, biaya, beasiswa.","Siapkan pilihan utama dan cadangan, mulai dari sekarang."],
+b:["Matriks keputusan: pilih jurusan utama dan cadangan. Alina mencoba beberapa opsi di bawah, tidak hanya Kedokteran.","Aksi: jaga nilai rapor, try out SNBT rutin, riset jalur masuk dan beasiswa.","Bicara dengan orang tua agar mendapat restu dan dukungan."],
+c:"Janji kami: terus belajar konsisten dan berani melangkah, karena masa depan ditentukan oleh usaha yang dimulai hari ini."},
+{t:"Integritas Akademik",s:"Literasi dan numerasi",h:"Jebakan Integritas di Dunia Perkuliahan",m:"Literasi, numerasi, dan etika akademik · Kelompok 4",
+a:["Penyebab joki: tugas menumpuk, manajemen waktu buruk, kebiasaan lama.","Batas similarity 15 sampai 20% wajar, karena kutipan bersitasi dan istilah baku tetap ada.","Titip absen 30% + joki 10% dari 200 kasus = 80 kasus."],
+b:["Kehadiran minimal 75% dari 16 pertemuan = 12; Raka tepat 12, lolos UAS tetapi rawan.","Sidang etik Kasus A: AI tanpa sitasi plus parafrase tetap plagiarisme.","Skor Turnitin hanya indikator awal, isi karya tetap dinilai dosen."],
+c:"Jalan pintas merusak diri sendiri. Karya sendiri, sitasi jelas, dan data asli adalah dasar karier yang tahan lama."},
+{t:"Esai Bahasa Indonesia",s:"Esai deskriptif",h:"Menulis Esai Deskriptif Pascakunjungan BLK",m:"Mata pelajaran Bahasa Indonesia · Kelas XII",
+a:["Tiga fokus observasi: peluang kerja masa kini, kesiapan jasmani dan rohani, refleksi nilai agama.","Esai 300 sampai 400 kata: pendahuluan (tesis), isi deskriptif, penutup (simpulan).","Isu yang dikritisi: joki, plagiarisme, pergaulan bebas."],
+b:["Penilaian: struktur 25, kedalaman tema 35, sikap kritis 25, bahasa 15.","Pakai bahasa baku, kalimat efektif, kosakata deskriptif.","Menghubungkan pengalaman BLK dengan nilai moral."],
+c:"Kesimpulan esai: keterampilan, tubuh yang sehat, dan benteng moral berjalan bersama menyiapkan diri secara jujur dan profesional."}
+];
+var opened={},cur=0;
+var tabs=document.getElementById("tabs"),panel=document.getElementById("panel");
+function li(a){return "<ul>"+a.map(function(x){return "<li>"+x+"</li>"}).join("")+"</ul>"}
+function show(i){cur=i;opened[i]=1;var d=L[i];
+ panel.innerHTML="<h3>"+d.h+"</h3><p class='meta'>"+d.m+"</p><div class='cols'><div><h4>Temuan utama</h4>"+li(d.a)+"</div><div><h4>Rencana dan detail</h4>"+li(d.b)+"</div></div><div class='core'>Kesimpulan inti: "+d.c+"</div>"+(i==3?mem()+"<div id='jur'>"+jr()+"</div>":"");
+ var n=0;[].forEach.call(tabs.children,function(b,k){b.setAttribute("aria-selected",k==i);if(opened[k]){b.classList.add("done");n++;document.getElementById("lf"+k).classList.add("on")}});
+ document.getElementById("cnt").textContent=n+" / 6 dibaca";document.getElementById("fill").style.width=(n/6*100)+"%";
+ if(n==6){document.getElementById("cnt").textContent="Pohon tumbuh penuh! 🎉";burst()}}
+L.forEach(function(d,i){var b=document.createElement("button");b.className="tab";b.setAttribute("role","tab");b.innerHTML="<b>"+d.t+"</b><span>"+d.s+"</span>";b.onclick=function(){show(i)};tabs.appendChild(b)});
+show(0);opened={};
+[].forEach.call(tabs.children,function(b){b.classList.remove("done")});
+document.getElementById("lf0").classList.remove("on");document.getElementById("fill").style.width="0";document.getElementById("cnt").textContent="0 / 6 dibaca";
+// calculator
+var P=[["ITB STEI-K",90,2381],["Unpad Elektro",29,665],["UI Elektro",34,505]],A=document.getElementById("a"),S=document.getElementById("s"),chips=document.getElementById("chips");
+function calc(){var a=+A.value,s=+S.value,r=document.getElementById("r"),t=document.getElementById("rt"),g=document.getElementById("g");
+ if(!a||!s||a<=0||s<=0){r.textContent="–";t.textContent="Isi kedua angka untuk melihat hasilnya.";g.style.width="0";return}
+ var p=a/s*100,lv=p<5?"sangat ketat":p<10?"ketat":p<30?"cukup ketat":"relatif longgar";
+ r.textContent=p.toFixed(2).replace(".",",")+"%";g.style.width=Math.min(p,100)+"%";
+ t.textContent="Tingkat persaingan: "+lv+". Rata-rata 1 orang lolos dari sekitar "+(s/a).toFixed(1).replace(".",",")+" pendaftar.";}
+P.forEach(function(p,i){var b=document.createElement("button");b.className="chip";b.textContent=p[0];b.setAttribute("aria-pressed","false");b.onclick=function(){[].forEach.call(chips.children,function(c){c.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true");A.value=p[1];S.value=p[2];calc()};chips.appendChild(b)});
+A.oninput=S.oninput=function(){[].forEach.call(chips.children,function(c){c.setAttribute("aria-pressed","false")});calc()};
+chips.firstChild.click();
+// pledge
+var C=["Memilih prodi dengan data resmi dan menyiapkan Plan B","Menjaga tidur, gerak, dan kesehatan mental setiap hari","Mengasah keterampilan dan mematuhi K3 saat belajar kerja","Mengerjakan tugas sendiri, tanpa joki, titip absen, atau data fiktif","Berdiskusi dengan orang tua dan guru BK soal rencana masa depan"],pl=document.getElementById("pledge");
+C.forEach(function(c){var l=document.createElement("label");l.innerHTML="<input type='checkbox'><span>"+c+"</span>";l.firstChild.onchange=upd;pl.appendChild(l)});
+function upd(){var n=pl.querySelectorAll("input:checked").length,m=document.getElementById("pmsg");
+ m.textContent=n==0?"":n<5?n+" dari 5 komitmen. Satu langkah kecil tetap menumbuhkan.":"Lima dari lima. Masa depan berkelanjutan dimulai dari sini.";if(n==5)burst();}
+// essay
+var ES=document.getElementById("es"),EF=document.getElementById("ef"),F=[["Semua",""],["Pendahuluan","pendahuluan"],["Peluang kerja","peluang"],["Jasmani dan rohani","sehat"],["Nilai agama","agama"],["Penutup","penutup"]];
+F.forEach(function(f,i){var b=document.createElement("button");b.className="chip";b.textContent=f[0];b.setAttribute("aria-pressed",i==0);b.onclick=function(){[].forEach.call(EF.children,function(c){c.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true");ES.classList.toggle("f",!!f[1]);[].forEach.call(ES.querySelectorAll("p[data-p]"),function(p){p.classList.toggle("hit",p.dataset.p==f[1])})};EF.appendChild(b)});
+var wn=0;[].forEach.call(ES.querySelectorAll("p[data-p]"),function(p){wn+=p.textContent.replace(p.querySelector(".lb").textContent,"").trim().split(/\s+/).length});
+document.getElementById("wc").textContent=wn+" kata";document.getElementById("wf").style.width=Math.min(wn/400*100,100)+"%";
+var RB=[["Struktur lengkap: pendahuluan, isi, penutup",25],["Membahas BLK, peluang kerja, sehat jasmani dan rohani, serta nilai agama",35],["Argumen jelas menolak joki, plagiarisme, dan pergaulan bebas",25],["Bahasa baku, kalimat efektif, kosakata deskriptif",15]],rb=document.getElementById("rb");
+RB.forEach(function(r){var l=document.createElement("label");l.innerHTML="<input type='checkbox' data-s='"+r[1]+"'><span>"+r[0]+" ("+r[1]+" poin)</span>";l.firstChild.onchange=function(){var t=0;[].forEach.call(rb.querySelectorAll("input:checked"),function(c){t+=+c.dataset.s});document.getElementById("sc").textContent="Skor: "+t+" / 100"};rb.appendChild(l)});
+// jurusan
+var J=[
+{n:"Psikologi",k:"UI, UGM, Unpad",c:"Alina suka mempelajari perilaku manusia, mudah berempati, dan jadi pendengar yang baik.",t:"Persaingan ketat; jadi psikolog biasanya perlu lanjut ke jenjang profesi.",s:"Perbanyak membaca dan latihan soal penalaran untuk UTBK, ikut kegiatan konseling sebaya di sekolah."},
+{n:"Kedokteran",k:"UI, IPB",c:"Sejalan dengan minat membantu orang lain dan dunia kesehatan.",t:"Keketatan nasional sangat tinggi dan biaya kuliah besar.",s:"Kuatkan penalaran saintifik sejak dini, jaga nilai rapor, siapkan jalur cadangan dan cek beasiswa."},
+{n:"Kesehatan Masyarakat",k:"UI, Unair, Undip",c:"Menggabungkan minat kesehatan dengan kepedulian pada isu sosial.",t:"Lapangan kerjanya luas tetapi perlu pandai memilih peminatan.",s:"Cari tahu prospek lulusan dan magang di puskesmas atau lembaga kesehatan."},
+{n:"Ilmu Komunikasi",k:"Unpad, UI, UGM",c:"Alina senang menulis dan menyampaikan pendapat secara lisan maupun tulisan.",t:"Banyak peminat, jadi portofolio menulis sangat membantu.",s:"Rutin menulis, ikut jurnalistik atau lomba debat untuk membangun portofolio."},
+{n:"Bimbingan dan Konseling",k:"UPI, UNJ",c:"Cocok dengan bakat empati, mendengar, dan membantu teman yang kesulitan.",t:"Perlu kesabaran emosional dan kesiapan menghadapi cerita berat orang lain.",s:"Belajar dari guru BK sekolah dan ikut kegiatan peer counselor."}];
+var jp={u:null,b:null,sel:0};
+function jr(){var d=J[jp.sel];return "<h4 style='margin-top:26px'>Eksplor jurusan lain (versi Alina)</h4><p class='meta'>Klik jurusan untuk melihat kecocokannya dengan pemetaan diri. Cek data resmi SNPMB sebelum memutuskan.</p><div class='jg'>"+J.map(function(x,k){return "<button class='jc"+(k==jp.sel?" on":"")+"' data-j='"+k+"'>"+x.n+"</button>"}).join("")+"</div><div class='jd'><b>"+d.n+"</b> ("+d.k+")<p>Cocok karena: "+d.c+"</p><p>Tantangan: "+d.t+"</p><p>Solusi: "+d.s+"</p><div class='row'><button class='jb' data-u='"+jp.sel+"'>Jadikan pilihan utama</button><button class='jb' data-b='"+jp.sel+"'>Jadikan cadangan</button></div></div><div class='core'>Matriks keputusanku. Utama: "+(jp.u==null?"belum dipilih":J[jp.u].n)+". Cadangan: "+(jp.b==null?"belum dipilih":J[jp.b].n)+".</div>"}
+panel.addEventListener("click",function(e){var t=e.target.closest("[data-j],[data-u],[data-b]");if(!t)return;var D=t.dataset;if(D.j!=null)jp.sel=+D.j;if(D.u!=null)jp.u=+D.u;if(D.b!=null)jp.b=+D.b;document.getElementById("jur").innerHTML=jr()});
+// anggota
+var M=[
+{n:"Alina",mi:"Mempelajari perilaku manusia, membaca, menulis, dan membantu teman.",bk:"Cepat paham konsep dan analisis, mudah berempati.",pk:"Psikolog, konselor, praktisi SDM, dan peneliti perilaku.",u:"Kedokteran, Universitas Indonesia",c:"Kedokteran, IPB",tc:"Persaingan nasional sangat ketat. Solusinya memperkuat penalaran saintifik untuk UTBK dan menjaga nilai rapor.",j:"Terus belajar konsisten dan berani melangkah karena masa depan ditentukan oleh usaha hari ini."},
+{n:"Siti Reska",mi:"Aktivitas yang praktis dan terstruktur, lebih suka bekerja langsung daripada membaca teks panjang.",bk:"Cepat menangkap pola hitungan, teliti, dan mudah beradaptasi di lingkungan disiplin.",pk:"Administrasi, manajemen operasional, logistik, dan aparatur sipil negara.",u:"Teknik Sipil, ITB",c:"Pendidikan kedinasan STMKG atau Poltekim",tc:"UTBK sangat ketat, sedangkan kedinasan menguji SKD CAT, kesehatan, kesamaptaan, dan wawancara. Solusinya tryout SKD rutin, olahraga, dan restu orang tua.",j:"Jangan takut melangkah, karena setiap proses hari ini adalah langkah pasti menuju masa depan impian."},
+{n:"Fidya",mi:"Dunia bisnis: mengelola usaha, pemasaran, dan cara bisnis berkembang.",bk:"Pandai mengatur, bekerja sama, berkomunikasi, dan menyelesaikan masalah.",pk:"Pengusaha, manajer, staf pemasaran, konsultan bisnis, dan administrasi perusahaan.",u:"Manajemen Bisnis, Universitas Negeri Yogyakarta",c:"Manajemen Bisnis, Universitas Trisakti",tc:"Seleksi PTN ketat dan biaya perlu dipertimbangkan. Solusinya giat latihan soal, berdiskusi dengan orang tua, dan mencari beasiswa.",j:"Terus berusaha dan mempersiapkan diri sebaik mungkin, karena kerja keras sekarang membantu meraih masa depan lebih baik."}];
+var mp=0;
+function mm(){var d=M[mp];return "<div class='jg'>"+M.map(function(x,k){return "<button class='jc"+(k==mp?" on":"")+"' data-m='"+k+"'>"+x.n+"</button>"}).join("")+"</div><div class='jd'><p><b>Minat:</b> "+d.mi+"</p><p><b>Bakat:</b> "+d.bk+"</p><p><b>Peluang kerja:</b> "+d.pk+"</p><p><b>Pilihan utama:</b> "+d.u+"</p><p><b>Cadangan:</b> "+d.c+"</p><p><b>Tantangan dan solusi:</b> "+d.tc+"</p><p><b>Janji untuk diri sendiri:</b> “"+d.j+"”</p></div>"}
+function mem(){return "<h4 style='margin-top:26px'>Tiga suara Kelompok 4</h4><p class='meta'>Tiga anggota, tiga arah berbeda. Klik nama untuk melihat hasil seminar masing-masing.</p><div id='mem'>"+mm()+"</div><div class='core'>Pola bersama: ketiganya menyiapkan pilihan cadangan, menyusun rencana belajar, dan akan berdiskusi dengan orang tua. Jurusan boleh berbeda, kesiapannya sama.</div>"}
+panel.addEventListener("click",function(e){var t=e.target.closest("[data-m]");if(!t)return;mp=+t.dataset.m;document.getElementById("mem").innerHTML=mm()});
+// esai
+var E=[
+{t:"Pendahuluan",x:"Selasa pagi, 17 November 2026, rombongan kami melangkah masuk ke <mark>UPTD Balai Latihan Kerja (BLK) Provinsi Banten</mark>. Dari luar bangunannya tampak sederhana, tetapi di dalam bengkel suasananya hidup: percikan api las, denging mesin jahit, dan aroma oli bercampur menjadi satu. Hari itu saya sadar bahwa <mark>dunia kerja menunggu lulusan yang punya lebih dari sekadar ijazah</mark>, dan bersiap tidak boleh menunggu sampai lulus.",n:"Tesis: gambaran suasana BLK dan tantangan dunia kerja masa kini."},
+{t:"Isi 1: peluang kerja",x:"Di bengkel otomasi industri, saya melihat trainer <mark>PLC</mark>, sensor, dan motor listrik bekerja membentuk rangkaian kontrol otomatis. Di unit lain, peserta merakit panel listrik, memperbaiki rem motor, menjahit kemeja, hingga menata rambut. Instruktur menjelaskan bahwa industri mencari tenaga terampil yang memegang <mark>sertifikat BNSP</mark>. Sertifikat itu bukti kemampuan yang diakui secara nasional, bukan sekadar janji di atas kertas. Saya bisa membayangkan lulusan SMA keluar dari sini sebagai teknisi, mekanik, atau pemilik usaha jahit kecil.",n:"Deskripsi keterampilan yang dicari pasar dan kemajuan teknologi di BLK."},
+{t:"Isi 2: jasmani dan rohani",x:"Keterampilan saja belum cukup. Bekerja di bengkel menuntut <mark>tubuh yang kuat dan disiplin</mark>: sepatu keselamatan, kacamata, dan sarung tangan wajib dipakai, serta mesin harus dimatikan setelah digunakan. Satu kelalaian kecil bisa melukai. Mental pun diuji, mulai dari sabar ketika gagal, tahan terhadap target, sampai rela belajar dari instruktur. Menurut saya, <mark>etos kerja profesional</mark> lahir dari tubuh yang sehat dan hati yang tenang.",n:"Pentingnya sehat fisik dan mental, kedisiplinan, dan K3."},
+{t:"Isi 3: benteng moral",x:"Namun keterampilan tanpa kejujuran itu rapuh. Godaan jalan pintas selalu ada, seperti <mark>joki tugas</mark>, menyalin karya orang lain tanpa sitasi, hingga <mark>pergaulan bebas</mark> yang menggerus waktu, kesehatan, dan masa depan. Agama mengajarkan bahwa kejujuran adalah amanah. Ijazah hasil joki mungkin tampak sama, tetapi tidak menolong ketika kita benar-benar harus bekerja. Plagiarisme mencuri jerih payah orang lain, dan pergaulan bebas merusak diri serta orang yang kita sayangi. Saya menolak ketiganya bukan karena takut aturan, melainkan karena ingin masa depan yang bisa saya pertanggungjawabkan.",n:"Sikap kritis: argumentasi menolak joki, plagiarisme, dan pergaulan bebas berdasarkan nilai agama."},
+{t:"Penutup",x:"Kunjungan itu mengajarkan bahwa masa depan dibangun dari tiga hal: <mark>tangan yang terampil</mark>, tubuh dan jiwa yang sehat, serta <mark>hati yang jujur</mark>. Mulai sekarang saya berkomitmen belajar dengan sungguh-sungguh, menjaga diri, dan menolak jalan pintas, supaya kelak siap bekerja secara jujur dan profesional.",n:"Pesan moral dan komitmen menyiapkan diri."}];
+var R=[["Struktur (25)",[0,4],"Ada pendahuluan bertesis, tiga paragraf isi, dan penutup yang lugas."],["Kedalaman tema (35)",[1,2,3],"Tiga paragraf isi membahas peluang kerja, jasmani-rohani, dan refleksi nilai agama."],["Sikap kritis (25)",[3],"Argumen jelas menolak joki, plagiarisme, dan pergaulan bebas."],["Bahasa (15)",[],"Kalimat efektif dan kosakata deskriptif. Kata kunci disorot di dalam esai."]];
+var es=document.getElementById("essay"),rb=document.getElementById("rub");
+es.innerHTML="<h3>Dari Bengkel BLK, Aku Belajar: Masa Depan Dibangun oleh Tangan Terampil dan Hati yang Jujur</h3>"+E.map(function(p,i){return "<div class='ep' tabindex='0' role='button' data-i='"+i+"'><small>"+p.t+"</small><p>"+p.x+"</p><div class='nt'>Fungsi paragraf: "+p.n+"</div></div>"}).join("")+"<div class='wc' id='wc'></div>";
+document.getElementById("wc").textContent=es.innerText?"":"";
+var wd=E.map(function(p){return p.x.replace(/<[^>]+>/g,"")}).join(" ").trim().split(/\s+/).length;document.getElementById("wc").textContent="Panjang esai: "+wd+" kata (target 300 sampai 400).";
+function tog(e){var p=e.target.closest(".ep");if(p)p.classList.toggle("open")}
+es.onclick=tog;es.onkeydown=function(e){if(e.key=="Enter"||e.key==" "){e.preventDefault();tog(e)}};
+R.forEach(function(r,k){var b=document.createElement("button");b.className="chip";b.style.cssText="color:var(--ink);border-color:var(--line)";b.textContent=r[0];b.setAttribute("aria-pressed","false");b.onclick=function(){var on=b.getAttribute("aria-pressed")=="true";[].forEach.call(rb.children,function(c){c.setAttribute("aria-pressed","false")});[].forEach.call(es.querySelectorAll(".ep"),function(p){p.classList.remove("hl")});es.classList.remove("dim","kw");var n=document.getElementById("rnote");if(on){n.textContent="Pilih salah satu aspek penilaian di atas.";return}b.setAttribute("aria-pressed","true");n.textContent=r[2];if(r[1].length){es.classList.add("dim");r[1].forEach(function(i){es.querySelectorAll(".ep")[i].classList.add("hl")})}else es.classList.add("kw")};rb.appendChild(b)});
+function burst(){var e=["🌱","🍃","✨","🌼","🌿","🎉"];for(var i=0;i<22;i++){var s=document.createElement("span");s.className="cf";s.textContent=e[i%6];s.style.left=(Math.random()*95)+"%";s.style.animationDelay=(Math.random()*.8)+"s";document.body.appendChild(s);setTimeout(function(x){x.remove()},3600,s)}}
+// theme
+var th=document.getElementById("theme");th.onclick=function(){var r=document.documentElement,dark=r.dataset.theme?r.dataset.theme=="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=dark?"light":"dark"};
+</script>
+</body>
+</html>
